@@ -29,12 +29,30 @@ public class Tester {
         p2 = new Player("2s","2h");
         int r1 = p1.rankOfHand(d);
         int r2 = p2.rankOfHand(d);
+        //test one pair
         assertTrue(r1 == 20);
         assertTrue(r2 == 8);
         d.setFlopped("3s","3c","9d","jh","kc");
         r1 = p1.rankOfHand(d);
         r2 = p2.rankOfHand(d);
+        //test two pair
         assertTrue(r1 == 88);
         assertTrue(r2 == 21);
+        d.setFlopped("1d","2d","9d","jh","kc");
+        r1 = p1.rankOfHand(d);
+        r2 = p2.rankOfHand(d);
+        //test 3 of a kind
+        assertTrue(r1 == 111);
+        assertTrue(r2 == 99);
+        d.setFlopped("3s","4c","5d","6h","kc");
+        p1 = new Player("8s","7h");
+        p2 = new Player("2s","1h");
+        r1 = p1.rankOfHand(d);
+        r2 = p2.rankOfHand(d);
+        System.out.println(r1);
+        System.out.println(r2);
+        //test straight
+       // assertTrue(r1 == 115);
+       // assertTrue(r2 == 113);
     }
 }

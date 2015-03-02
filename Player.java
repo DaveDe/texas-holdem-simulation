@@ -108,6 +108,7 @@ public class Player {
            }             
             
         //check for straights, store values in straightValues
+        //search for weakest first, strongest last
         straight = false;
         //01
         if(ints[0] == ints[1]-1){
@@ -119,31 +120,31 @@ public class Player {
                     if(ints[3] == ints[4]-1){
                         straight = true;
                         straightValues.clear();
-                        straightValues.add(ints[4]);
-                        straightValues.add(ints[3]);
-                        straightValues.add(ints[2]);
-                        straightValues.add(ints[1]);
                         straightValues.add(ints[0]);
+                        straightValues.add(ints[1]);
+                        straightValues.add(ints[2]);
+                        straightValues.add(ints[3]);
+                        straightValues.add(ints[4]);
                     }
                     //01235
                     else if(ints[3] == ints[5]-1){
                         straight = true;
                         straightValues.clear();
-                        straightValues.add(ints[5]);
-                        straightValues.add(ints[3]);
-                        straightValues.add(ints[2]);
-                        straightValues.add(ints[1]);
                         straightValues.add(ints[0]);
+                        straightValues.add(ints[1]);
+                        straightValues.add(ints[2]);
+                        straightValues.add(ints[3]);
+                        straightValues.add(ints[5]);
                     }
                     //01236
                     else if(ints[3] == ints[6]-1){
                         straight = true;
                         straightValues.clear();
-                        straightValues.add(ints[6]);
-                        straightValues.add(ints[3]);
-                        straightValues.add(ints[2]);
-                        straightValues.add(ints[1]);
                         straightValues.add(ints[0]);
+                        straightValues.add(ints[1]);
+                        straightValues.add(ints[2]);
+                        straightValues.add(ints[3]);
+                        straightValues.add(ints[6]);
                     }
                 }
                 //0124
@@ -152,32 +153,32 @@ public class Player {
                     if(ints[4] == ints[5]-1){
                         straight = true;
                         straightValues.clear();
-                        straightValues.add(ints[5]);
-                        straightValues.add(ints[4]);
-                        straightValues.add(ints[2]);
-                        straightValues.add(ints[1]);
                         straightValues.add(ints[0]);
+                        straightValues.add(ints[1]);
+                        straightValues.add(ints[2]);
+                        straightValues.add(ints[4]);
+                        straightValues.add(ints[5]);
                     }
                     //01246
                     else if(ints[4] == ints[6]-1){
                         straight = true;
                         straightValues.clear();
-                        straightValues.add(ints[6]);
-                        straightValues.add(ints[4]);
-                        straightValues.add(ints[2]);
-                        straightValues.add(ints[1]);
                         straightValues.add(ints[0]);
+                        straightValues.add(ints[1]);
+                        straightValues.add(ints[2]);
+                        straightValues.add(ints[4]);
+                        straightValues.add(ints[6]);
                     }
                 }
                 //01256
                 if((ints[2] == ints[5]-1) && (ints[5] == ints[6]-1)){
                     straight = true;
                     straightValues.clear();
-                    straightValues.add(ints[6]);
-                    straightValues.add(ints[5]);
-                    straightValues.add(ints[2]);
-                    straightValues.add(ints[1]);
                     straightValues.add(ints[0]);
+                    straightValues.add(ints[1]);
+                    straightValues.add(ints[2]);
+                    straightValues.add(ints[5]);
+                    straightValues.add(ints[6]);
                 }
             }
             //013
@@ -188,43 +189,43 @@ public class Player {
                     if(ints[4] == ints[5]-1){
                         straight = true;
                         straightValues.clear();
-                        straightValues.add(ints[5]);
-                        straightValues.add(ints[4]);
-                        straightValues.add(ints[3]);
-                        straightValues.add(ints[1]);
                         straightValues.add(ints[0]);
+                        straightValues.add(ints[1]);
+                        straightValues.add(ints[3]);
+                        straightValues.add(ints[4]);
+                        straightValues.add(ints[5]);
                     }
                     //01346
                     else if(ints[4] == ints[6]-1){
                         straight = true;
                         straightValues.clear();
-                        straightValues.add(ints[6]);
-                        straightValues.add(ints[4]);
-                        straightValues.add(ints[3]);
-                        straightValues.add(ints[1]);
                         straightValues.add(ints[0]);
+                        straightValues.add(ints[1]);
+                        straightValues.add(ints[3]);
+                        straightValues.add(ints[4]);
+                        straightValues.add(ints[6]);
                     }
                 }
                 //01356
                 if((ints[3] == ints[5]-1)&&(ints[5] == ints[6]-1)){
                     straight = true;
                     straightValues.clear();
-                    straightValues.add(ints[6]);
-                    straightValues.add(ints[5]);
-                    straightValues.add(ints[3]);
-                    straightValues.add(ints[1]);
                     straightValues.add(ints[0]);
+                    straightValues.add(ints[1]);
+                    straightValues.add(ints[3]);
+                    straightValues.add(ints[5]);
+                    straightValues.add(ints[6]);
                 }
             }
             //01456
             else if((ints[1] == ints[4]-1)&&(ints[4] == ints[5]-1)&&(ints[5] == ints[6]-1)){
                 straight = true;
                 straightValues.clear();
-                straightValues.add(ints[6]);
-                straightValues.add(ints[5]);
-                straightValues.add(ints[4]);
-                straightValues.add(ints[1]);
                 straightValues.add(ints[0]);
+                straightValues.add(ints[1]);
+                straightValues.add(ints[4]);
+                straightValues.add(ints[5]);
+                straightValues.add(ints[6]);
             }
         }
         //02
@@ -237,54 +238,54 @@ public class Player {
                     if(ints[4] == ints[5]-1){
                         straight = true;
                         straightValues.clear();
-                        straightValues.add(ints[5]);
-                        straightValues.add(ints[4]);
-                        straightValues.add(ints[3]);
-                        straightValues.add(ints[2]);
                         straightValues.add(ints[0]);
+                        straightValues.add(ints[2]);
+                        straightValues.add(ints[3]);
+                        straightValues.add(ints[4]);
+                        straightValues.add(ints[5]);
                     }
                     //02346
                     else if(ints[4] == ints[6]-1){
                         straight = true;
                         straightValues.clear();
-                        straightValues.add(ints[6]);
-                        straightValues.add(ints[4]);
-                        straightValues.add(ints[3]);
-                        straightValues.add(ints[2]);
                         straightValues.add(ints[0]);
+                        straightValues.add(ints[2]);
+                        straightValues.add(ints[3]);
+                        straightValues.add(ints[4]);
+                        straightValues.add(ints[6]);
                     }
                 }
                 //02356
                 else if((ints[3] == ints[5]-1)&&(ints[5] == ints[6]-1)){
                     straight = true;
                     straightValues.clear();
-                    straightValues.add(ints[6]);
-                    straightValues.add(ints[5]);
-                    straightValues.add(ints[3]);
-                    straightValues.add(ints[2]);
                     straightValues.add(ints[0]);
+                    straightValues.add(ints[2]);
+                    straightValues.add(ints[3]);
+                    straightValues.add(ints[5]);
+                    straightValues.add(ints[6]);
                 }
             }
             //02456
             else if((ints[2] == ints[4]-1)&&(ints[4]==ints[5]-1)&&(ints[5]==ints[6]-1)){
                 straight = true;
                 straightValues.clear();
-                straightValues.add(ints[6]);
-                straightValues.add(ints[5]);
-                straightValues.add(ints[4]);
-                straightValues.add(ints[2]);
                 straightValues.add(ints[0]);
+                straightValues.add(ints[2]);
+                straightValues.add(ints[4]);
+                straightValues.add(ints[5]);
+                straightValues.add(ints[6]);
             }
         }
         //03456
         else if((ints[0] == ints[3]-1)&&(ints[3] == ints[4]-1)&&(ints[4]==ints[5]-1)&&(ints[5]==ints[6]-1)){ 
             straight = true;
             straightValues.clear();
-            straightValues.add(ints[6]);
-            straightValues.add(ints[5]);
-            straightValues.add(ints[4]);
-            straightValues.add(ints[3]);
             straightValues.add(ints[0]);
+            straightValues.add(ints[3]);
+            straightValues.add(ints[4]);
+            straightValues.add(ints[5]);
+            straightValues.add(ints[6]);
         }
         //12
         else if(ints[1] == ints[2]-1){
@@ -296,56 +297,65 @@ public class Player {
                     if(ints[4]==ints[5]-1){
                         straight = true;
                         straightValues.clear();
-                        straightValues.add(ints[5]);
-                        straightValues.add(ints[4]);
-                        straightValues.add(ints[3]);
-                        straightValues.add(ints[2]);
                         straightValues.add(ints[1]);
+                        straightValues.add(ints[2]);
+                        straightValues.add(ints[3]);
+                        straightValues.add(ints[4]);
+                        straightValues.add(ints[5]);
                     }
                     //12346
                     else if(ints[4]==ints[6]-1){
                         straight = true;
                         straightValues.clear();
-                        straightValues.add(ints[6]);
-                        straightValues.add(ints[4]);
-                        straightValues.add(ints[3]);
-                        straightValues.add(ints[2]);
                         straightValues.add(ints[1]);
+                        straightValues.add(ints[2]);
+                        straightValues.add(ints[3]);
+                        straightValues.add(ints[4]);
+                        straightValues.add(ints[6]);
                     }
                 }
                 //12356
                 else if((ints[3]==ints[5]-1)&&(ints[5]==ints[6]-1)){
                     straight = true;
                     straightValues.clear();
-                    straightValues.add(ints[6]);
-                    straightValues.add(ints[5]);
-                    straightValues.add(ints[3]);
-                    straightValues.add(ints[2]);
                     straightValues.add(ints[1]);
+                    straightValues.add(ints[2]);
+                    straightValues.add(ints[3]);
+                    straightValues.add(ints[5]);
+                    straightValues.add(ints[6]);
                 }
             }
             //12456
             else if((ints[2]==ints[4]-1)&&(ints[4]==ints[5]-1)&&(ints[5]==ints[6]-1)){
                 straight = true;
                 straightValues.clear();
-                straightValues.add(ints[6]);
-                straightValues.add(ints[5]);
-                straightValues.add(ints[4]);
-                straightValues.add(ints[2]);
                 straightValues.add(ints[1]);
+                straightValues.add(ints[2]);
+                straightValues.add(ints[4]);
+                straightValues.add(ints[5]);
+                straightValues.add(ints[6]);
             }
         }
         //13456
         else if((ints[1] == ints[3]-1)&&(ints[3]==ints[4]-1)&&(ints[4]==ints[5]-1)&&(ints[5]==ints[6]-1)){   
             straight = true;
             straightValues.clear();
-            straightValues.add(ints[6]);
-            straightValues.add(ints[5]);
-            straightValues.add(ints[4]);
-            straightValues.add(ints[3]);
             straightValues.add(ints[1]);
+            straightValues.add(ints[3]);
+            straightValues.add(ints[4]);
+            straightValues.add(ints[5]);
+            straightValues.add(ints[6]);
         }
-        
+        //check for ace - 5 straight. previous checks didnt account for this specific type of straight
+        if(Rank.findNum(ints, 14) && Rank.findNum(ints, 2) && Rank.findNum(ints, 3) && Rank.findNum(ints, 4) && Rank.findNum(ints, 5)){
+            straight = true;
+            straightValues.clear();
+            straightValues.add(14);
+            straightValues.add(2);
+            straightValues.add(3);
+            straightValues.add(4);
+            straightValues.add(5);
+        }
         
         //checks for flush, stores values in flushValues
         flush = false;
@@ -462,9 +472,28 @@ public class Player {
                 }
             }
         }
-       // if(rankGeneral == "Three of a kind"){
-            
-        //}
+       if(rankGeneral == "Three of a kind"){
+           int rank = 99;
+            for(int i = 2; i<=tValueA; i++){
+                if(i == tValueA){
+                    finalRank = rank;
+                }
+                rank++;
+            }
+        }
+        if(rankGeneral == "Straight"){
+            int rank = 112;
+            if(straightValues.get(0) == 14){
+                finalRank = rank;
+            }
+            rank++;
+            for(int i = 2; i <= straightValues.get(0); i++){
+                if(i == straightValues.get(0)){
+                    finalRank = rank;
+                }
+                rank++;
+            }
+        }
         return finalRank;
     }
     //finds greatest of two cards, if equal return 0
@@ -512,5 +541,11 @@ public class Player {
     }
     public int getValueC(){
         return sValueC;
+    }
+    public int getTValueA(){
+        return tValueA;
+    }
+    public int getQValueA(){
+        return qValueA;
     }
 }

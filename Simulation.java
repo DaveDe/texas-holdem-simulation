@@ -79,7 +79,7 @@ public class Simulation {
         if((r1 == r2) && (r1 <=7)){
            winner = Rank.compareHighCards(p1Cards,p2Cards);
         }
-        //find winner if both have 1 pair
+        //find winner if both have the same pair
         if((r1 == r2) && (r1 >= 8)&&(r1 <=20)){             
                //remove the pair from arraylists
                list1.remove(Integer.valueOf(p1.getValueA()));
@@ -98,7 +98,7 @@ public class Simulation {
                    }
                }                        
         }
-        //find winner if both have 2 pair
+        //find winner if both have the same 2 pairs
         if((r1 == r2) && (r1 >= 21) && (r1 <=98)){
             list1.remove(Integer.valueOf(p1.getValueA()));
             list1.remove(Integer.valueOf(p1.getValueA()));
@@ -115,7 +115,26 @@ public class Simulation {
                 winner = "Player 2";
             }     
         }
-        //find winner if both have 3 of a kind
+        //find winner if both have the same 3 of a kind
+        if((r1 == r2) && (r1>=99) && (r1 <= 111)){
+            list1.remove(Integer.valueOf(p1.getTValueA()));
+            list1.remove(Integer.valueOf(p1.getTValueA()));
+            list1.remove(Integer.valueOf(p1.getTValueA()));
+            list2.remove(Integer.valueOf(p2.getTValueA()));
+            list2.remove(Integer.valueOf(p2.getTValueA()));
+            list2.remove(Integer.valueOf(p2.getTValueA()));
+            //check the next 2 highest cards
+               for(int i = 3; i>=2; i--){
+                   if(list1.get(i) > list2.get(i)){
+                       winner = "Player 1";
+                       break;
+                    }
+                   if(list1.get(i) < list2.get(i)){
+                       winner = "Player 2";
+                       break;
+                    }
+                }  
+        }
         System.out.println(winner);
     }
     
