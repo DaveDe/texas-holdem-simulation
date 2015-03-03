@@ -135,6 +135,21 @@ public class Simulation {
                     }
                 }  
         }
+        // if straights are the same its a tie
+        if((r1 == 122) && (r2 == 122)){
+            ArrayList<Integer> v1 = p1.getFlushValues();
+            ArrayList<Integer> v2 = p2.getFlushValues();
+            for(int i = 0; i <= 4; i++){
+                if(v1.get(i) > v2.get(i)){
+                    winner = "Player 1";
+                    break;
+                }
+                if(v2.get(i) > v1.get(i)){
+                    winner = "Player 2";
+                    break;
+                }
+            }
+        }
         System.out.println(winner);
     }
     

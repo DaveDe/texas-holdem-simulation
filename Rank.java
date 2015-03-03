@@ -99,9 +99,5 @@ public class Rank {
            min = c; 
         }
         return min;
-    }    
-    //returns true if a num is in the array, false otherwise
-    public static boolean findNum(int[] arr, int targetValue) {
-        return Arrays.asList(arr).contains(targetValue);
-    }   
+    }      
 }

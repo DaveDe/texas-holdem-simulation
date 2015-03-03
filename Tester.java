@@ -49,10 +49,27 @@ public class Tester {
         p2 = new Player("2s","1h");
         r1 = p1.rankOfHand(d);
         r2 = p2.rankOfHand(d);
-        System.out.println(r1);
-        System.out.println(r2);
+        d.setFlopped("2s","3c","4d","7h","kc");
+        p3 = new Player("5s","6h");
+        p4 = new Player("5s","1h");
+        int r3 = p3.rankOfHand(d);
+        int r4 = p4.rankOfHand(d);
+        d.setFlopped("2s","3c","~d","jh","kc");
+        p5 = new Player("qs","1h");
+        int r5 = p5.rankOfHand(d);
         //test straight
-       // assertTrue(r1 == 115);
-       // assertTrue(r2 == 113);
+        assertTrue(r1 == 115);
+        assertTrue(r2 == 113);
+        assertTrue(r3 == 114);
+        assertTrue(r4 == 112);
+        assertTrue(r5 == 121);
+        d.setFlopped("2s","3s","~s","jh","ks");
+        p1 = new Player("8s","7h");
+        p2 = new Player("2j","1s");
+        r1 = p1.rankOfHand(d);
+        r2 = p2.rankOfHand(d);
+        //test flush
+        assertTrue(r1 == 122);
+        assertTrue(r2 == 122);
     }
 }
