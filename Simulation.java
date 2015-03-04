@@ -136,6 +136,7 @@ public class Simulation {
                 }  
         }
         // if straights are the same its a tie
+        //compare flush's
         if((r1 == 122) && (r2 == 122)){
             ArrayList<Integer> v1 = p1.getFlushValues();
             ArrayList<Integer> v2 = p2.getFlushValues();
@@ -150,7 +151,25 @@ public class Simulation {
                 }
             }
         }
+        // if full house's are the same its a tie
+        // compare four of a kind
+        if((r1 == r2) && (r1 >=160) && (r1 <= 172)){
+            list1.remove(Integer.valueOf(p1.getQValueA()));
+            list1.remove(Integer.valueOf(p1.getQValueA()));
+            list1.remove(Integer.valueOf(p1.getQValueA()));
+            list1.remove(Integer.valueOf(p1.getQValueA()));
+            list2.remove(Integer.valueOf(p2.getQValueA()));
+            list2.remove(Integer.valueOf(p2.getQValueA()));
+            list2.remove(Integer.valueOf(p2.getQValueA()));
+            list2.remove(Integer.valueOf(p2.getQValueA()));
+            //check next highest card
+            if(list1.get(2) > list2.get(2)){
+                winner = "Player 1";
+            }
+            if(list1.get(2) < list2.get(2)){
+                winner = "Player 2";
+            }
+        }
         System.out.println(winner);
     }
-    
 }

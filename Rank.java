@@ -47,6 +47,8 @@ public class Rank {
                 ints[i] = 12;
             }else if(chars[i] == 'k'){
                 ints[i] = 13;
+            }else if(chars[i] == '1'){
+                ints[i] = 14;
             }else{
                 ints[i] = Character.getNumericValue(chars[i]);
             }

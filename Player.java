@@ -381,7 +381,11 @@ public class Player {
             flush = true;
             for(int i = 0; i < cards.length; i++){
                 if(cards[i].charAt(1) == 's'){
-                    flushValues.add(Character.getNumericValue(cards[i].charAt(0)));
+                    if(cards[i].charAt(0) == '1'){
+                        flushValues.add(14);
+                    }else{
+                        flushValues.add(Character.getNumericValue(cards[i].charAt(0)));
+                    }
                 }
             }
         }
@@ -389,7 +393,11 @@ public class Player {
             flush = true;
             for(int i = 0; i < cards.length; i++){
                 if(cards[i].charAt(1) == 'c'){
-                    flushValues.add(Character.getNumericValue(cards[i].charAt(0)));
+                    if(cards[i].charAt(0) == '1'){
+                        flushValues.add(14);
+                    }else{
+                        flushValues.add(Character.getNumericValue(cards[i].charAt(0)));
+                    }
                 }
             }
         }
@@ -397,7 +405,11 @@ public class Player {
             flush = true;
             for(int i = 0; i < cards.length; i++){
                 if(cards[i].charAt(1) == 'd'){
-                    flushValues.add(Character.getNumericValue(cards[i].charAt(0)));
+                    if(cards[i].charAt(0) == '1'){
+                        flushValues.add(14);
+                    }else{
+                        flushValues.add(Character.getNumericValue(cards[i].charAt(0)));
+                    }
                 }
             }
         }
@@ -405,9 +417,14 @@ public class Player {
             flush = true;
             for(int i = 0; i < cards.length; i++){
                 if(cards[i].charAt(1) == 'h'){
-                    flushValues.add(Character.getNumericValue(cards[i].charAt(0)));
+                    if(cards[i].charAt(0) == '1'){
+                        flushValues.add(14);
+                    }else{
+                        flushValues.add(Character.getNumericValue(cards[i].charAt(0)));
+                    }
                 }
             }
+
         }
         //ensure flushValues is ascending order
         Collections.sort(flushValues);
@@ -435,6 +452,7 @@ public class Player {
         } 
         
         //evaluate finalRank
+        //rank from 0 - 7
         if(rankGeneral == "High card"){
             int max = 0;
             for(int i = 0; i < ints.length; i++){
@@ -444,9 +462,11 @@ public class Player {
                 finalRank = max-7;
             }
         }
+        //rank from
         if(rankGeneral == "One pair"){
             finalRank = sValueA + 6;
         }
+        //rank from
         if(rankGeneral == "Two pairs"){
             //ensure sValueA stores the greatest pair
             if(sValueB > sValueA){
@@ -466,6 +486,7 @@ public class Player {
                 }
             }
         }
+        //rank from
        if(rankGeneral == "Three of a kind"){
            int rank = 99;
             for(int i = 2; i<=tValueA; i++){
@@ -475,6 +496,7 @@ public class Player {
                 rank++;
             }
         }
+        //rank from
         if(rankGeneral == "Straight"){
             int rank = 112;
             if(straightValues.get(0) == 14){
@@ -492,6 +514,22 @@ public class Player {
         //handle flushes in main, allocate a rank of 122
         if(rankGeneral == "Flush"){
             finalRank = 122;
+        }
+        //rank from 123-
+        if(rankGeneral == "Full House"){
+            int rank = 123;
+            finalRank = rank;
+        }
+        //rank from (160-172)
+        if(rankGeneral == "Four of a kind"){
+            int rank = 160;
+            for(int i = 2; i<=14; i++){
+                if(qValueA == i){
+                    finalRank = rank;
+                    break;
+                }
+                rank++;
+            }
         }
 
         return finalRank;

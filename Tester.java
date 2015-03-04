@@ -2,6 +2,8 @@ package simulation;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Tester {
     @Test
@@ -71,5 +73,61 @@ public class Tester {
         //test flush
         assertTrue(r1 == 122);
         assertTrue(r2 == 122);
+        String winner = "";
+        ArrayList<Integer> v1 = p1.getFlushValues();
+        ArrayList<Integer> v2 = p2.getFlushValues();
+            for(int i = 0; i <= 4; i++){
+                if(v1.get(i) > v2.get(i)){
+                    winner = "Player 1";
+                    break;
+                }
+                if(v2.get(i) > v1.get(i)){
+                    winner = "Player 2";
+                    break;
+                }
+            }
+        assertTrue(winner == "Player 2");
+        
+        //test four of a kind
+        d.setFlopped("1s","1s","1s","3h","3s");
+        p1 = new Player("1s","7h");
+        p2 = new Player("3j","3s");
+        r1 = p1.rankOfHand(d);
+        r2 = p2.rankOfHand(d);
+        assertTrue(r1 == 172);
+        assertTrue(r2 == 161);
+        d.setFlopped("1s","1s","1s","1h","3d");
+        p1 = new Player("ks","7h");
+        p2 = new Player("jd","3s");
+        r1 = p1.rankOfHand(d);
+        r2 = p2.rankOfHand(d);
+        int[] intsA = Rank.getInts(Rank.getChars(p1.getA(),p1.getB(),d.getFlopped()));
+        int[] intsB = Rank.getInts(Rank.getChars(p2.getA(),p2.getB(),d.getFlopped()));
+        //list of p1 cards
+        ArrayList<Integer> list1 = new ArrayList<Integer>();
+            for(int i = 0; i<intsA.length; i++){
+                list1.add(intsA[i]);
+            }
+        //list of p2 cards
+        ArrayList<Integer> list2 = new ArrayList<Integer>();
+            for(int i = 0; i<intsB.length; i++){
+                list2.add(intsB[i]);
+            }
+        list1.remove(Integer.valueOf(p1.getQValueA()));
+        list1.remove(Integer.valueOf(p1.getQValueA()));
+        list1.remove(Integer.valueOf(p1.getQValueA()));
+        list1.remove(Integer.valueOf(p1.getQValueA()));
+        list2.remove(Integer.valueOf(p2.getQValueA()));
+        list2.remove(Integer.valueOf(p2.getQValueA()));
+        list2.remove(Integer.valueOf(p2.getQValueA()));
+        list2.remove(Integer.valueOf(p2.getQValueA()));
+            //check next highest card
+            if(list1.get(2) > list2.get(2)){
+                winner = "Player 1";
+            }
+            if(list1.get(2) < list2.get(2)){
+                winner = "Player 2";
+            }
+        assertTrue(winner == "Player 1");
     }
 }
