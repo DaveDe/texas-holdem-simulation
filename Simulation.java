@@ -136,7 +136,7 @@ public class Simulation {
                 }  
         }
         // if straights are the same its a tie
-        //compare flush's
+        //compare flush's (too many possible ranks to allocate in Player class)
         if((r1 == 122) && (r2 == 122)){
             ArrayList<Integer> v1 = p1.getFlushValues();
             ArrayList<Integer> v2 = p2.getFlushValues();
@@ -153,7 +153,7 @@ public class Simulation {
         }
         // if full house's are the same its a tie
         // compare four of a kind
-        if((r1 == r2) && (r1 >=160) && (r1 <= 172)){
+        if((r1 == r2) && (r1 >=279) && (r1 <= 291)){
             list1.remove(Integer.valueOf(p1.getQValueA()));
             list1.remove(Integer.valueOf(p1.getQValueA()));
             list1.remove(Integer.valueOf(p1.getQValueA()));
@@ -170,6 +170,7 @@ public class Simulation {
                 winner = "Player 2";
             }
         }
+        //same straight flushes are a tie, this only happens when all flopped cards are straight flush
         System.out.println(winner);
     }
 }

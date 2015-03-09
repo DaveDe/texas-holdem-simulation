@@ -1,0 +1,338 @@
+Ranks
+
+HAND ------ RANK
+
+High Card (0-7)
+
+7 high = 0
+8 high = 1
+9 high = 2
+10 high = 3
+J high = 4
+Q high = 5
+K high = 6
+A high = 7
+
+
+One Pair (8-20)
+
+Pair of 2's = 8
+Pair of 3's = 9
+Pair of 4's = 10
+Pair of 5's = 11
+Pair of 6's = 12
+Pair of 7's = 13
+Pair of 8's = 14
+Pair of 9's = 15
+Pair of 10's = 16
+Pair of J's = 17
+Pair of Q's = 18
+Pair of K's = 19
+Pair of A's = 20
+
+
+Two Pairs (21-98)
+
+3's and 2's = 21
+4's and 2's = 22
+4's and 3's = 23
+5's and 2's = 24
+5's and 3's = 25
+5's and 4's = 26
+6's and 2's = 27
+6's and 3's = 28
+6's and 4's = 29
+6's and 5's = 30
+7's and 2's = 31
+7's and 3's = 32
+7's and 4's = 33
+7's and 5's = 34
+7's and 6's = 35
+8's and 2's = 36
+8's and 3's = 37
+8's and 4's = 38
+8's and 5's = 39
+8's and 6's = 40
+8's and 7's = 41
+9's and 2's = 42
+9's and 3's = 43
+9's and 4's = 44
+9's and 5's = 45
+9's and 6's = 46
+9's and 7's = 47
+9's and 8's = 48
+10's and 2's = 49
+10's and 3's = 50
+10's and 4's = 51
+10's and 5's = 52
+10's and 6's = 53
+10's and 7's = 54
+10's and 8's = 55
+10's and 9's = 56
+J's and 2's = 57
+J's and 3's = 58
+J's and 4's = 59
+J's and 5's = 60
+J's and 6's = 61
+J's and 7's = 62
+J's and 8's = 63
+J's and 9's = 64
+J's and 10's = 65
+Q's and 2's = 66
+Q's and 3's = 67
+Q's and 4's = 68
+Q's and 5's = 69
+Q's and 6's = 70
+Q's and 7's = 71
+Q's and 8's = 72
+Q's and 9's = 73
+Q's and 10's = 74
+Q's and J's = 75
+K's and 2's = 76
+K's and 3's = 77
+K's and 4's = 78
+K's and 5's = 79
+K's and 6's = 80
+K's and 7's = 81
+K's and 8's = 82
+K's and 9's = 83
+K's and 10's = 84
+K's and J's = 85
+K's and Q's = 86
+A's and 2's = 87
+A's and 3's = 88
+A's and 4's = 89
+A's and 5's = 90
+A's and 6's = 91
+A's and 7's = 92
+A's and 8's = 93
+A's and 9's = 94
+A's and 10's = 95
+A's and J's = 96
+A's and Q's = 97
+A's and K's = 98
+
+
+Three of a Kind (99-111)
+
+Three 2's = 99
+Three 3's = 100
+Three 4's = 101
+Three 5's = 102
+Three 6's = 103
+Three 7's = 104
+Three 8's = 105
+Three 9's = 106
+Three 10's = 107
+Three J's = 108
+Three Q's = 109
+Three K's = 110
+Three A's = 111
+
+
+Straight (112-121)
+
+A2345 = 112
+23456 = 113
+34567 = 114
+45678 = 115
+56789 = 116
+678910 = 117
+78910J = 118
+8910JQ = 119
+910JQK = 120
+10JQKA = 121
+
+
+Flush (122) - flushes are compared in the main
+
+
+Full House (123-278)
+
+Three 2's and Two 3's = 123
+Three 2's and Two 4's = 124
+Three 2's and Two 5's = 125
+Three 2's and Two 6's = 126
+Three 2's and Two 7's = 127
+Three 2's and Two 8's = 128
+Three 2's and Two 9's = 129
+Three 2's and Two 10's = 130
+Three 2's and Two J's = 131
+Three 2's and Two Q's = 132
+Three 2's and Two K's = 133
+Three 2's and Two A's = 134
+Three 3's and Two 2's = 135
+Three 3's and Two 4's = 136
+Three 3's and Two 5's = 137
+Three 3's and Two 6's = 138
+Three 3's and Two 7's = 139
+Three 3's and Two 8's = 140
+Three 3's and Two 9's = 141
+Three 3's and Two 10's = 142
+Three 3's and Two J's = 143
+Three 3's and Two Q's = 144
+Three 3's and Two K's = 145
+Three 3's and Two A's = 146
+Three 4's and Two 2's = 147
+Three 4's and Two 3's = 148
+Three 4's and Two 5's = 149
+Three 4's and Two 6's = 150
+Three 4's and Two 7's = 151
+Three 4's and Two 8's = 152
+Three 4's and Two 9's = 153
+Three 4's and Two 10's = 154
+Three 4's and Two J's = 155
+Three 4's and Two Q's = 156
+Three 4's and Two K's = 157
+Three 4's and Two A's = 158
+Three 5's and Two 2's = 159
+Three 5's and Two 3's = 160
+Three 5's and Two 4's = 161
+Three 5's and Two 6's = 162
+Three 5's and Two 7's = 163
+Three 5's and Two 8's = 164
+Three 5's and Two 9's = 165
+Three 5's and Two 10's = 166
+Three 5's and Two J's = 167
+Three 5's and Two Q's = 168
+Three 5's and Two K's = 169
+Three 5's and Two A's = 170
+Three 6's and Two 2's = 171
+Three 6's and Two 3's = 172
+Three 6's and Two 4's = 173
+Three 6's and Two 5's = 174
+Three 6's and Two 7's = 175
+Three 6's and Two 8's = 176
+Three 6's and Two 9's = 177
+Three 6's and Two 10's = 178
+Three 6's and Two J's = 179
+Three 6's and Two Q's = 180
+Three 6's and Two K's = 181
+Three 6's and Two A's = 182
+Three 7's and Two 2's = 183
+Three 7's and Two 3's = 184
+Three 7's and Two 4's = 185
+Three 7's and Two 5's = 186
+Three 7's and Two 6's = 187
+Three 7's and Two 8's = 188
+Three 7's and Two 9's = 189
+Three 7's and Two 10's = 190
+Three 7's and Two J's = 191
+Three 7's and Two Q's = 192
+Three 7's and Two K's = 193
+Three 7's and Two A's = 194
+Three 8's and Two 2's = 195
+Three 8's and Two 3's = 196
+Three 8's and Two 4's = 197
+Three 8's and Two 5's = 198
+Three 8's and Two 6's = 199
+Three 8's and Two 7's = 200
+Three 8's and Two 9's = 201
+Three 8's and Two 10's = 202
+Three 8's and Two J's = 203
+Three 8's and Two Q's = 204
+Three 8's and Two K's = 205
+Three 8's and Two A's = 206
+Three 9's and Two 2's = 207
+Three 9's and Two 3's = 208
+Three 9's and Two 4's = 209
+Three 9's and Two 5's = 210
+Three 9's and Two 6's = 211
+Three 9's and Two 7's = 212
+Three 9's and Two 8's = 213
+Three 9's and Two 10's = 214
+Three 9's and Two J's = 215
+Three 9's and Two Q's = 216
+Three 9's and Two K's = 217
+Three 9's and Two A's = 218
+Three 10's and Two 2's = 219
+Three 10's and Two 3's = 220
+Three 10's and Two 4's = 221
+Three 10's and Two 5's = 222
+Three 10's and Two 6's = 223
+Three 10's and Two 7's = 224
+Three 10's and Two 8's = 225
+Three 10's and Two 9's = 226
+Three 10's and Two J's = 227
+Three 10's and Two Q's = 228
+Three 10's and Two K's = 229
+Three 10's and Two A's = 230
+Three J's and Two 2's = 231
+Three J's and Two 3's = 232
+Three J's and Two 4's = 233
+Three J's and Two 5's = 234
+Three J's and Two 6's = 235
+Three J's and Two 7's = 236
+Three J's and Two 8's = 237
+Three J's and Two 9's = 238
+Three J's and Two 10's = 239
+Three J's and Two Q's = 240
+Three J's and Two K's = 241
+Three J's and Two A's = 242
+Three Q's and Two 2's = 243
+Three Q's and Two 3's = 244
+Three Q's and Two 4's = 245
+Three Q's and Two 5's = 246
+Three Q's and Two 6's = 247
+Three Q's and Two 7's = 248
+Three Q's and Two 8's = 249
+Three Q's and Two 9's = 250
+Three Q's and Two 10's = 251
+Three Q's and Two J's = 252
+Three Q's and Two K's = 253
+Three Q's and Two A's = 254
+Three K's and Two 2's = 255
+Three K's and Two 3's = 256
+Three K's and Two 4's = 257
+Three K's and Two 5's = 258
+Three K's and Two 6's = 259
+Three K's and Two 7's = 260
+Three K's and Two 8's = 261
+Three K's and Two 9's = 262
+Three K's and Two 10's = 263
+Three K's and Two J's = 264
+Three K's and Two Q's = 265
+Three K's and Two A's = 266
+Three A's and Two 2's = 267
+Three A's and Two 3's = 268
+Three A's and Two 4's = 269
+Three A's and Two 5's = 270
+Three A's and Two 6's = 271
+Three A's and Two 7's = 272
+Three A's and Two 8's = 273
+Three A's and Two 9's = 274
+Three A's and Two 10's = 275
+Three A's and Two J's = 276
+Three A's and Two Q's = 277
+Three A's and Two K's = 278
+
+
+Four of a Kind (279-291)
+
+Four 2's = 279
+Four 3's = 280
+Four 4's = 281
+Four 5's = 282
+Four 6's = 283
+Four 7's = 284
+Four 8's = 285
+Four 9's = 286
+Four 10's = 287
+Four J's = 288
+Four Q's = 289
+Four K's = 290
+Four A's = 291
+
+
+Straight Flush (292-301)
+
+A2345 = 292
+23456 = 293
+34567 = 294
+45678 = 295
+56789 = 296
+678910 = 297
+78910J = 298
+8910JQ = 299
+910JQK = 300
+10JQKA = 301
