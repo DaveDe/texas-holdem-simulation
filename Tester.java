@@ -50,6 +50,13 @@ public class Tester {
         int r2 = p2.rankOfHand(d);
         assertTrue(r1 == 88);
         assertTrue(r2 == 21);
+        d.setFlopped("5c","6d","7c","1s","5s");
+        Player p3 = new Player("6s","1h");
+        Player p4 = new Player("6s","7h");
+        int r3 = p3.rankOfHand(d);
+        int r4 = p4.rankOfHand(d);
+        assertTrue(r3 == 91);
+        assertTrue(r4 == 35);
     }
     @Test
     public void testThreeOfAKind(){
@@ -198,5 +205,33 @@ public class Tester {
         assertTrue(r3 == 293);
         assertTrue(r4 == 301);
         assertTrue(r5 == 300);
+    }
+    @Test
+    public void testHighCardTie(){
+        Deck d = new Deck();
+        d.newDeck();
+        d.setFlopped("3h","4d","6c","8s","js");
+        Player p1 = new Player("1s","qh");
+        Player p2 = new Player("1s","qs");
+        Player p3 = new Player("1s","ks");
+        Player p4 = new Player("1s","qh");
+        Player p5 = new Player("1s","qs");
+        Player p6 = new Player("~s","7s");
+        Player p7 = new Player("~s","7h");
+        Player p8 = new Player("~s","7s");
+        Compare c = new Compare();
+        String winner = c.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        d.setFlopped("1h","kd","qc","8s","2s");
+        p1 = new Player("4h","3c");
+        p2 = new Player("~h","3c");
+        p3 = new Player("7h","3c");
+        p4 = new Player("jh","3c");
+        p5 = new Player("9h","3c");
+        p6 = new Player("5h","3c");
+        p7 = new Player("~h","3c");
+        p8 = new Player("7h","3c");
+        String winner2 = c.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(winner == "Player 3");
+        assertTrue(winner2 == "Player 4");
     }
 }

@@ -25,7 +25,8 @@ public class Simulation {
         Player p7 = new Player(d.getHands(6),d.getHands(14));
         Player p8 = new Player(d.getHands(7),d.getHands(15));
         d.finishDealing();// flop cards
-        Compare c = new Compare(p1,p2,p3,p4,p5,p6,p7,p8,d);
-        
+        Compare c = new Compare();  
+        String winner = c.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        System.out.println(winner); 
     }
 }

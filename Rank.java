@@ -6,24 +6,6 @@ import java.util.Arrays;
 //also has a bunch of static methods
 public class Rank {
     
-    
-    //returns String of winning player
-    //if top 5 cards are the same then its a tie
-    public static String compareHighCards(int[] a, int[] b){
-        String winner = "tie";
-        for(int i = 6; i>=2; i--){
-            if(a[i] > b[i]){
-                winner = "player 1";
-                i = 1;
-            }
-            if(a[i] < b[i]){
-                winner = "player 2";
-                i = 1;
-            }
-            
-        }
-        return winner;//all cards match, its a tie
-    }
     //get a players hand as chars
     public static char[] getChars(String a, String b, String[] c){
         char[] chars = new char[7];        

@@ -709,7 +709,7 @@ public class Player {
             rankGeneral = "Straight";
         }else if(tPairs == 1){
             rankGeneral = "Three of a kind";
-        }else if(sPairs == 2){
+        }else if(sPairs >= 2){
             rankGeneral = "Two pairs";
         }else if(sPairs == 1){
             rankGeneral = "One pair";
@@ -734,6 +734,14 @@ public class Player {
         }
         //rank from 21-98
         if(rankGeneral == "Two pairs"){
+            //if 3 pairs, store top 2 in sValueA and sValueB
+            if(sPairs == 3){
+                if((sValueA < sValueB) && (sValueA < sValueC)){
+                    sValueA = sValueC;
+                }else if((sValueB < sValueA) && (sValueB < sValueC)){
+                    sValueB = sValueC;
+                }
+            }
             //ensure sValueA stores the greatest pair
             if(sValueB > sValueA){
                 int temp = sValueB;
@@ -907,6 +915,7 @@ public class Player {
         }
         return min;
     }
+
      
     public String getRank(){
         return rankGeneral;
@@ -940,5 +949,26 @@ public class Player {
     }
     public ArrayList<Integer> getStraightValues(){
         return straightValues;
+    }
+
+    public int getCardsSorted(int index, Deck d){
+        String[] flopped = d.getFlopped();
+        int[] ints = new int[7];
+        ints[0] = Rank.convert(a.charAt(0));
+            if(ints[0] == 0){
+                ints[0] = Character.getNumericValue(a.charAt(0));
+            }
+        ints[1] = Rank.convert(b.charAt(0));
+            if(ints[1] == 0){
+                ints[1] = Character.getNumericValue(a.charAt(0));
+            }
+        for(int i = 2; i < ints.length; i++){
+        ints[i] = Rank.convert(flopped[i-2].charAt(0));
+            if(ints[i] == 0){
+                ints[i] = Character.getNumericValue(flopped[i-2].charAt(0));
+            }
+        }
+        Arrays.sort(ints);
+        return ints[index];
     }
 }
