@@ -12,6 +12,7 @@ public class Simulation {
  * @param args 
  */
     public static void main(String[] args) {
+       // for(int i = 0; i <= 100; i++){
         Deck d = new Deck();
         Rank r = new Rank();
         d.newDeck(); //new 52 card deck of same order
@@ -26,7 +27,8 @@ public class Simulation {
         Player p8 = new Player(d.getHands(7),d.getHands(15));
         d.finishDealing();// flop cards
         Compare c = new Compare();  
-        String winner = c.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
-        System.out.println(winner); 
+        String winnerHand = c.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        System.out.println(winnerHand); 
+        //}
     }
 }

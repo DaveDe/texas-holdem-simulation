@@ -104,20 +104,6 @@ public class Tester {
         int r2 = p2.rankOfHand(d);
         assertTrue(r1 == 122);
         assertTrue(r2 == 122);
-        String winner = "";
-        ArrayList<Integer> v1 = p1.getFlushValues();
-        ArrayList<Integer> v2 = p2.getFlushValues();
-            for(int i = 0; i <= 4; i++){
-                if(v1.get(i) > v2.get(i)){
-                    winner = "Player 1";
-                    break;
-                }
-                if(v2.get(i) > v1.get(i)){
-                    winner = "Player 2";
-                    break;
-                }
-            }
-        assertTrue(winner == "Player 2");
     }
     @Test
     public void testFullHouse(){
@@ -221,6 +207,7 @@ public class Tester {
         Player p8 = new Player("~s","7s");
         Compare c = new Compare();
         String winner = c.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c.getWinner() == "Player 3");
         d.setFlopped("1h","kd","qc","8s","2s");
         p1 = new Player("4h","3c");
         p2 = new Player("~h","3c");
@@ -230,8 +217,165 @@ public class Tester {
         p6 = new Player("5h","3c");
         p7 = new Player("~h","3c");
         p8 = new Player("7h","3c");
-        String winner2 = c.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
-        assertTrue(winner == "Player 3");
-        assertTrue(winner2 == "Player 4");
+        Compare c2 = new Compare();
+        String winner2 = c2.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c2.getWinner() == "Player 4");
+        d.setFlopped("1h","kd","qc","8s","2s");
+        p1 = new Player("9h","3c");
+        p2 = new Player("9h","4c");
+        p3 = new Player("9h","5c");
+        p4 = new Player("9h","6c");
+        p5 = new Player("9h","7c");
+        p6 = new Player("9h","4c");
+        p7 = new Player("9h","5c");
+        p8 = new Player("9h","6c");
+        Compare c3 = new Compare();
+        String winner3 = c3.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c3.getWinner() == "tie");
+    }
+    @Test
+    public void testOnePairTie(){
+        Deck d = new Deck();
+        d.newDeck();
+        d.setFlopped("3h","4d","6c","8s","js");
+        Player p1 = new Player("3s","2h");
+        Player p2 = new Player("3s","5s");
+        Player p3 = new Player("3s","9s");
+        Player p4 = new Player("3s","kh");
+        Player p5 = new Player("3s","~s");
+        Player p6 = new Player("3s","1s");
+        Player p7 = new Player("3s","7h");
+        Player p8 = new Player("3s","5s");
+        Compare c = new Compare();
+        String winner = c.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c.getWinner() == "Player 6");
+        d.setFlopped("3h","4d","kc","7s","1s");
+        p1 = new Player("3h","jc");
+        p2 = new Player("3h","qc");
+        p3 = new Player("3h","5c");
+        p4 = new Player("3h","5c");
+        p5 = new Player("3h","5c");
+        p6 = new Player("3h","5c");
+        p7 = new Player("3h","5c");
+        p8 = new Player("3h","5c");
+        Compare c2 = new Compare();
+        String winner2 = c2.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c2.getWinner() == "Player 2");
+        d.setFlopped("3h","4d","kc","7s","1s");
+        p1 = new Player("3h","qc");
+        p2 = new Player("3h","qc");
+        p3 = new Player("3h","qc");
+        p4 = new Player("3h","qc");
+        p5 = new Player("3h","qc");
+        p6 = new Player("3h","qc");
+        p7 = new Player("3h","qc");
+        p8 = new Player("3h","qc");
+        Compare c3 = new Compare();
+        String winner3 = c3.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c3.getWinner() == "tie");
+    }
+    @Test
+    public void testTwoPairTie(){
+        Deck d = new Deck();
+        d.newDeck();
+        d.setFlopped("3h","3d","4c","4s","8s");
+        Player p1 = new Player("6s","9h");
+        Player p2 = new Player("6s","~s");
+        Player p3 = new Player("6s","js");
+        Player p4 = new Player("6s","qh");
+        Player p5 = new Player("6s","1s");
+        Player p6 = new Player("6s","ks");
+        Player p7 = new Player("6s","7h");
+        Player p8 = new Player("6s","5s");
+        Compare c = new Compare();
+        String winner = c.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c.getWinner() == "Player 5");
+        d.setFlopped("3h","3d","7c","7s","1s");
+        p1 = new Player("6h","jc");
+        p2 = new Player("6h","qc");
+        p3 = new Player("6h","kc");
+        p4 = new Player("6h","kc");
+        p5 = new Player("6h","2c");
+        p6 = new Player("6h","4c");
+        p7 = new Player("6h","5c");
+        p8 = new Player("6h","5c");
+        Compare c2 = new Compare();
+        String winner2 = c2.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c2.getWinner() == "tie");
+        d.setFlopped("3h","6d","7c","7s","1s");
+        p1 = new Player("6h","1c");
+        p2 = new Player("5h","1c");
+        p3 = new Player("kh","1c");
+        p4 = new Player("qh","1c");
+        p5 = new Player("jh","1c");
+        p6 = new Player("2h","1c");
+        p7 = new Player("2h","1c");
+        p8 = new Player("2h","1c");
+        Compare c3 = new Compare();
+        String winner3 = c3.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c3.getWinner() == "Player 3");
+    }
+    @Test
+    public void testThreeOfAKindTie(){
+        Deck d = new Deck();
+        d.newDeck();
+        d.setFlopped("3h","3d","3c","4s","8s");
+        Player p1 = new Player("2s","kh");
+        Player p2 = new Player("2s","qs");
+        Player p3 = new Player("2s","1s");
+        Player p4 = new Player("2s","jh");
+        Player p5 = new Player("2s","~s");
+        Player p6 = new Player("2s","9s");
+        Player p7 = new Player("2s","qh");
+        Player p8 = new Player("2s","ks");
+        Compare c = new Compare();
+        String winner = c.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c.getWinner() == "Player 3");
+        d.setFlopped("3h","3d","3c","7s","1s");
+        p1 = new Player("6h","2c");
+        p2 = new Player("6h","2c");
+        p3 = new Player("6h","kc");
+        p4 = new Player("6h","kc");
+        p5 = new Player("6h","2c");
+        p6 = new Player("6h","4c");
+        p7 = new Player("6h","5c");
+        p8 = new Player("6h","5c");
+        Compare c2 = new Compare();
+        String winner2 = c2.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c2.getWinner() == "tie");
+    }
+    @Test
+    public void testFlushTie(){
+        Deck d = new Deck();
+        Compare c = new Compare();
+        d.newDeck();
+        d.setFlopped("3h","5h","6h","2h","jd");
+        Player p1 = new Player("kd","~h");
+        Player p2 = new Player("~d","kh");
+        Player p3 = new Player("2d","jh");
+        Player p4 = new Player("1d","qh");
+        Player p5 = new Player("qd","1h");
+        Player p6 = new Player("jd","7h");
+        Player p7 = new Player("2d","8h");
+        Player p8 = new Player("2d","9h");
+        String winner = c.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c.getWinner() == "Player 5");
+    }
+    @Test
+    public void testFourOfAKindTie(){
+        Deck d = new Deck();
+        Compare c = new Compare();
+        d.newDeck();
+        d.setFlopped("3h","3d","3c","3s","5d");
+        Player p1 = new Player("2d","6h");
+        Player p2 = new Player("2d","7h");
+        Player p3 = new Player("2d","8h");
+        Player p4 = new Player("2d","9h");
+        Player p5 = new Player("2d","~h");
+        Player p6 = new Player("2d","jh");
+        Player p7 = new Player("2d","kh");
+        Player p8 = new Player("2d","qh");
+        String winner = c.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
+        assertTrue(c.getWinner() == "Player 7");
     }
 }

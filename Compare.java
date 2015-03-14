@@ -6,11 +6,12 @@ import java.util.Collections;
 
 public class Compare{
 	
+    private String winner;
+
 	public Compare(){}
 
 	//returns hand of winning player as a string
 	public String winningHand(Player p1, Player p2, Player p3, Player p4, Player p5, Player p6, Player p7, Player p8, Deck d){
-
 		int[] p1Cards = Rank.getInts(Rank.getChars(p1.getA(), p1.getB(), d.getFlopped()));//all of p1 cards(dealt and flopped)
         int[] p2Cards = Rank.getInts(Rank.getChars(p2.getA(), p2.getB(), d.getFlopped()));//stored in ascending order, ace is 14
         int[] p3Cards = Rank.getInts(Rank.getChars(p3.getA(), p3.getB(), d.getFlopped()));
@@ -20,7 +21,7 @@ public class Compare{
         int[] p7Cards = Rank.getInts(Rank.getChars(p7.getA(), p7.getB(), d.getFlopped()));
         int[] p8Cards = Rank.getInts(Rank.getChars(p8.getA(), p8.getB(), d.getFlopped()));
         int[] ranks = new int[8];
-        ranks[0] = p1.rankOfHand(d); //rank of p1
+        ranks[0] = p1.rankOfHand(d); //rank of p1, cant call this method more than once without unwanted side effects
         ranks[1] = p2.rankOfHand(d);
         ranks[2] = p3.rankOfHand(d);
         ranks[3] = p4.rankOfHand(d);
@@ -28,17 +29,16 @@ public class Compare{
         ranks[5] = p6.rankOfHand(d);
         ranks[6] = p7.rankOfHand(d);
         ranks[7] = p8.rankOfHand(d);
-        int[] staticRanks = new int[7];//copy of ranks, to find which player has which rank. This array will never be changed
-        for(int i = 0; i < staticRanks.length; i++){
+        int[] staticRanks = new int[8];
+        for(int i = 0; i < ranks.length; i++){
             staticRanks[i] = ranks[i];
         }
-
-        //print flopped cards
+      /*  //print flopped cards
         for(String x: d.getFlopped()){
             System.out.print(x+ " ");
         }
         System.out.println();
-    	//print player cards and corresponding rank
+        //print player cards and corresponding rank
         for(int x: p1Cards){
             System.out.print(x+ " ");
         }
@@ -78,10 +78,10 @@ public class Compare{
             System.out.print(x+ " ");
         }
         System.out.println();
-        System.out.println(ranks[7]);
+        System.out.println(ranks[7]);*/
 
         // find winner
-        String winner = "tie";
+        winner = "tie";
         Arrays.sort(ranks);
         //find if the top ranks are tied, store the ranks in an arraylist
         ArrayList<Integer> tied = new ArrayList<Integer>();
@@ -96,19 +96,19 @@ public class Compare{
         //find winner if a player is alone with the best rank
         if(tied.size() == 1){
         	int winningRank = tied.get(0);
-        	if(p1.rankOfHand(d) == winningRank){
+        	if(staticRanks[0] == winningRank){
         		winner = "Player 1";
-        	}else if(p2.rankOfHand(d) == winningRank){
+        	}else if(staticRanks[1] == winningRank){
         		winner = "Player 2";
-        	}else if(p3.rankOfHand(d) == winningRank){
+        	}else if(staticRanks[2] == winningRank){
         		winner = "Player 3";
-        	}else if(p4.rankOfHand(d) == winningRank){
+        	}else if(staticRanks[3] == winningRank){
         		winner = "Player 4";
-        	}else if(p5.rankOfHand(d) == winningRank){
+        	}else if(staticRanks[4] == winningRank){
         		winner = "Player 5";
-        	}else if(p6.rankOfHand(d) == winningRank){
+        	}else if(staticRanks[5] == winningRank){
         		winner = "Player 6";
-        	}else if(p7.rankOfHand(d) == winningRank){
+        	}else if(staticRanks[6] == winningRank){
         		winner = "Player 7";
         	}else{
         		winner = "Player 8";
@@ -124,38 +124,39 @@ public class Compare{
         int g = 0;
         int h = 0;
         ArrayList<Player> tiedPlayers = new ArrayList<Player>(); //stores all tied players of top rank
-        if(p1.rankOfHand(d) == tied.get(0)){
+        if(staticRanks[0] == tied.get(0)){
                 tiedPlayers.add(p1);
                 a = 1;
         }
-        if(p2.rankOfHand(d) == tied.get(0)){
+        if(staticRanks[1] == tied.get(0)){
                 tiedPlayers.add(p2);
                 b = 2;
         }
-        if(p3.rankOfHand(d) == tied.get(0)){
+        if(staticRanks[2] == tied.get(0)){
                 tiedPlayers.add(p3);
                 c = 3;
         }
-        if(p4.rankOfHand(d) == tied.get(0)){
+        if(staticRanks[3] == tied.get(0)){
                 tiedPlayers.add(p4);
                 d2 = 4;
         }
-        if(p5.rankOfHand(d) == tied.get(0)){
+        if(staticRanks[4] == tied.get(0)){
                 tiedPlayers.add(p5);
                 e = 5;
         }
-        if(p6.rankOfHand(d) == tied.get(0)){
+        if(staticRanks[5] == tied.get(0)){
                 tiedPlayers.add(p6);
                 f = 6;
         }
-        if(p7.rankOfHand(d) == tied.get(0)){
+        if(staticRanks[6] == tied.get(0)){
                 tiedPlayers.add(p7);
                 g = 7;
         }
-        if(p8.rankOfHand(d) == tied.get(0)){
+        if(staticRanks[7] == tied.get(0)){
                 tiedPlayers.add(p8);
                 h = 8;
         }
+        //System.out.println(tiedPlayers.get(0).getFlushValuesTemp().size());
         ArrayList<Integer> players = new ArrayList<Integer>();//stores the player numbers of those who are tied for 1st
         if(a == 1){
             players.add(a);
@@ -183,10 +184,10 @@ public class Compare{
         }
 
         //find winner if tied players have high cards
-        if((players.size() > 1) && (tiedPlayers.get(0).rankOfHand(d) <= 7) && (winner == "tie")){
+        if((players.size() > 1) && (ranks[7] <= 7) && (winner == "tie")){
             for(int i = 0; i <= players.size()-2; i++){ //loop through all tied players(excluding the last one)
                 for(int j = 5; j >= 2; j--){ //compare cards between the 2 players, up to the 5th card
-                    if(tiedPlayers.get(i).getCardsSorted(j,d) > tiedPlayers.get(i+1).getCardsSorted(j,d)){ //compare 2nd highest card
+                    if(tiedPlayers.get(i).getCardsSorted(j,d) > tiedPlayers.get(i+1).getCardsSorted(j,d)){ //compare next highest cards
                         tiedPlayers.remove(tiedPlayers.get(i+1));
                         players.remove(players.get(i+1));
                         i= -1;//look at the same player again, compared to someone else
@@ -194,7 +195,7 @@ public class Compare{
                     }else if(tiedPlayers.get(i).getCardsSorted(j,d) < tiedPlayers.get(i+1).getCardsSorted(j,d)){
                         tiedPlayers.remove(tiedPlayers.get(i));
                         players.remove(players.get(i));
-                        i= -1;//look at the same player again, compared to someone else
+                        i = -1;//look at the same player again, compared to someone else
                         j = 1;//break out of inner loop
                     }
                     if(tiedPlayers.size() == 1){
@@ -234,98 +235,341 @@ public class Compare{
                 }       
             }
         }
-        //find winner if both have the same pair
-       /* if((r1 == r2) && (r1 >= 8)&&(r1 <=20)){             
-               //remove the pair from arraylists
-               list1.remove(Integer.valueOf(p1.getValueA()));
-               list1.remove(Integer.valueOf(p1.getValueA()));
-               list2.remove(Integer.valueOf(p2.getValueA()));
-               list2.remove(Integer.valueOf(p2.getValueA()));
-               //check the next 3 highest cards
-               for(int i = 4; i>=2; i--){
-                   if(list1.get(i) > list2.get(i)){
-                       winner = "Player 1";
-                       break;
-                   }
-                   if(list1.get(i) < list2.get(i)){
-                       winner = "Player 2";
-                       break;
-                   }
-               }                        
-        }
-        //find winner if both have the same 2 pairs
-        if((r1 == r2) && (r1 >= 21) && (r1 <=98)){
-            list1.remove(Integer.valueOf(p1.getValueA()));
-            list1.remove(Integer.valueOf(p1.getValueA()));
-            list1.remove(Integer.valueOf(p1.getValueB()));
-            list1.remove(Integer.valueOf(p1.getValueB()));
-            list2.remove(Integer.valueOf(p2.getValueA()));
-            list2.remove(Integer.valueOf(p2.getValueA()));
-            list2.remove(Integer.valueOf(p2.getValueB()));
-            list2.remove(Integer.valueOf(p2.getValueB()));
-            //check the next highest card(last card in each list)
-            if(list1.get(2) > list2.get(2)){
-                winner = "Player 1";
-            }else if(list1.get(2) < list2.get(2)){
-                winner = "Player 2";
-            }     
-        }
-        //find winner if both have the same 3 of a kind
-        if((r1 == r2) && (r1>=99) && (r1 <= 111)){
-            list1.remove(Integer.valueOf(p1.getTValueA()));
-            list1.remove(Integer.valueOf(p1.getTValueA()));
-            list1.remove(Integer.valueOf(p1.getTValueA()));
-            list2.remove(Integer.valueOf(p2.getTValueA()));
-            list2.remove(Integer.valueOf(p2.getTValueA()));
-            list2.remove(Integer.valueOf(p2.getTValueA()));
-            //check the next 2 highest cards
-               for(int i = 3; i>=2; i--){
-                   if(list1.get(i) > list2.get(i)){
-                       winner = "Player 1";
-                       break;
+        //find winner if tied players have one pair of the same value
+        if((players.size() > 1) && (ranks[7] >= 8) && (ranks[7] <= 20) && (winner == "tie")){
+            ArrayList<ArrayList<Integer>> lists = new ArrayList<ArrayList<Integer>>();
+            for(int i = 0; i <= players.size()-1; i++){//loop through players, add lists of there cards minus the pair to lists arraylist
+                ArrayList<Integer> cards = tiedPlayers.get(i).getAllCardsSorted(d);
+                cards.remove((Integer)tiedPlayers.get(i).getValueA());
+                cards.remove((Integer)tiedPlayers.get(i).getValueA());
+                lists.add(cards);
+            }
+            //compare the top three cards from these lists, remove players as necesary
+            for(int i = 0; i <= lists.size() - 2; i++){//loop through players
+                for(int j = 4; j >= 2; j--){//loop through cards
+                    if(lists.get(i).get(j) > lists.get(i+1).get(j)){ //compare next highest cards
+                        lists.remove(lists.get(i+1));
+                        tiedPlayers.remove(tiedPlayers.get(i+1));
+                        players.remove(players.get(i+1));
+                        i= -1;//go back to the first player
+                        j = 1;//break out of inner loop
+                    }else if(lists.get(i).get(j) < lists.get(i+1).get(j)){
+                        lists.remove(lists.get(i));
+                        tiedPlayers.remove(tiedPlayers.get(i));
+                        players.remove(players.get(i));
+                        i = -1;//go back to first player
+                        j = 1;//break out of inner loop
                     }
-                   if(list1.get(i) < list2.get(i)){
-                       winner = "Player 2";
-                       break;
+                    if(tiedPlayers.size() == 1){
+                        int temp = players.get(0);
+                        switch(temp){
+                            case 1:
+                                winner = "Player 1";
+                                break;
+                            case 2:
+                                winner = "Player 2";
+                                break;
+                            case 3:
+                                winner = "Player 3";
+                                break;
+                            case 4:
+                                winner = "Player 4";
+                                break;
+                            case 5:
+                                winner = "Player 5";
+                                break;
+                            case 6:
+                                winner = "Player 6";
+                                break;
+                            case 7:
+                                winner = "Player 7";
+                                break;
+                            case 8:
+                                winner = "Player 8";
+                                break;
+                        }
                     }
-                }  
-        }
-        // if straights are the same its a tie
-        //compare flush's (too many possible ranks to allocate in Player class)
-        if((r1 == 122) && (r2 == 122)){
-            ArrayList<Integer> v1 = p1.getFlushValues();
-            ArrayList<Integer> v2 = p2.getFlushValues();
-            for(int i = 0; i <= 4; i++){
-                if(v1.get(i) > v2.get(i)){
-                    winner = "Player 1";
-                    break;
-                }
-                if(v2.get(i) > v1.get(i)){
-                    winner = "Player 2";
-                    break;
+                    if(winner != "tie"){
+                        //leave both loops
+                        j = 1;
+                        i = 10;
+                    }
                 }
             }
         }
-        // if full house's are the same its a tie
-        // compare four of a kind
-        if((r1 == r2) && (r1 >=279) && (r1 <= 291)){
-            list1.remove(Integer.valueOf(p1.getQValueA()));
-            list1.remove(Integer.valueOf(p1.getQValueA()));
-            list1.remove(Integer.valueOf(p1.getQValueA()));
-            list1.remove(Integer.valueOf(p1.getQValueA()));
-            list2.remove(Integer.valueOf(p2.getQValueA()));
-            list2.remove(Integer.valueOf(p2.getQValueA()));
-            list2.remove(Integer.valueOf(p2.getQValueA()));
-            list2.remove(Integer.valueOf(p2.getQValueA()));
-            //check next highest card
-            if(list1.get(2) > list2.get(2)){
-                winner = "Player 1";
+        //find winner if tied players have the same two pair
+        if((players.size() > 1) && (ranks[7] >= 21) && (ranks[7] <= 98) && (winner == "tie")){
+            ArrayList<Integer> max = new ArrayList<Integer>();
+            for(int i = 0; i <= players.size()-1; i++){//loop through players, add highest card after their 2 pairs to max (to compare their high card)
+                ArrayList<Integer> cards = tiedPlayers.get(i).getAllCardsSorted(d);
+                cards.remove((Integer)tiedPlayers.get(i).getValueA());
+                cards.remove((Integer)tiedPlayers.get(i).getValueA());
+                cards.remove((Integer)tiedPlayers.get(i).getValueB());
+                cards.remove((Integer)tiedPlayers.get(i).getValueB());
+                max.add(cards.get(2));
             }
-            if(list1.get(2) < list2.get(2)){
-                winner = "Player 2";
+                int maxVal = 0;
+                int maxIndex = 0;
+            for(int i = 0; i < max.size() - 1; i++){//find index of max card
+                if(max.get(i) > maxVal){
+                    maxVal = max.get(i);
+                    maxIndex = i;
+                }
             }
-        }*/
-        //same straight flushes are a tie, this only happens when all flopped cards are straight flush
-        return winner;
+            int aa = 0;
+            for(int i = 0; i < max.size() - 1; i++){//check for ties
+                if(max.get(i) == maxVal){
+                    aa++;
+                }
+            }
+            if(aa > 1){
+                winner = "tie";
+            }else{
+            int temp = players.get(maxIndex);
+            switch(temp){
+                    case 1:
+                        winner = "Player 1";
+                        break;
+                    case 2:
+                        winner = "Player 2";
+                        break;
+                    case 3:
+                        winner = "Player 3";
+                        break;
+                    case 4:
+                        winner = "Player 4";
+                        break;
+                    case 5:
+                        winner = "Player 5";
+                        break;
+                    case 6:
+                        winner = "Player 6";
+                        break;
+                    case 7:
+                        winner = "Player 7";
+                        break;
+                    case 8:
+                        winner = "Player 8";
+                        break;
+            }
+            }
+        }
+        //find winner if tied players have the same 3 of a kind
+        if((players.size() > 1) && (ranks[7] >= 99) && (ranks[7] <= 111) && (winner == "tie")){
+            ArrayList<ArrayList<Integer>> lists = new ArrayList<ArrayList<Integer>>();
+            for(int i = 0; i <= players.size()-1; i++){//loop through players, add lists of there cards minus the three of a kind 
+                ArrayList<Integer> cards = tiedPlayers.get(i).getAllCardsSorted(d);
+                cards.remove((Integer)tiedPlayers.get(i).getTValueA());
+                cards.remove((Integer)tiedPlayers.get(i).getTValueA());
+                cards.remove((Integer)tiedPlayers.get(i).getTValueA());
+                lists.add(cards);
+            }
+            //compare the top two cards from these lists, remove players as necesary
+            for(int i = 0; i <= lists.size() - 2; i++){//loop through players
+                for(int j = 3; j >= 2; j--){//loop through cards
+                    if(lists.get(i).get(j) > lists.get(i+1).get(j)){ //compare next highest cards
+                        lists.remove(lists.get(i+1));
+                        tiedPlayers.remove(tiedPlayers.get(i+1));
+                        players.remove(players.get(i+1));
+                        i= -1;//go back to the first player
+                        j = 1;//break out of inner loop
+                    }else if(lists.get(i).get(j) < lists.get(i+1).get(j)){
+                        lists.remove(lists.get(i));
+                        tiedPlayers.remove(tiedPlayers.get(i));
+                        players.remove(players.get(i));
+                        i = -1;//go back to first player
+                        j = 1;//break out of inner loop
+                    }
+                    if(tiedPlayers.size() == 1){
+                        int temp = players.get(0);
+                        switch(temp){
+                            case 1:
+                                winner = "Player 1";
+                                break;
+                            case 2:
+                                winner = "Player 2";
+                                break;
+                            case 3:
+                                winner = "Player 3";
+                                break;
+                            case 4:
+                                winner = "Player 4";
+                                break;
+                            case 5:
+                                winner = "Player 5";
+                                break;
+                            case 6:
+                                winner = "Player 6";
+                                break;
+                            case 7:
+                                winner = "Player 7";
+                                break;
+                            case 8:
+                                winner = "Player 8";
+                                break;
+                        }
+                    }
+                    if(winner != "tie"){
+                        //leave both loops
+                        j = 1;
+                        i = 10;
+                    }
+                }
+            }
+        }
+        //same straights is a tie
+        //find winner if tied players have flushes
+        if((players.size() > 1) && (ranks[7] == 122) && (winner == "tie")){
+            ArrayList<ArrayList<Integer>> lists = new ArrayList<ArrayList<Integer>>();
+            for(int i = 0; i <= players.size()-1; i++){//loop through players, add lists of there top flush cards
+                ArrayList<Integer> cards = tiedPlayers.get(i).getFlushValues();
+                lists.add(cards);
+            }
+            //compare the top five cards from these lists, remove players as necesary
+            for(int i = 0; i < lists.size() - 1; i++){//loop through players
+                for(int j = 4; j >= 0; j--){//loop through cards
+                    if(lists.get(i).get(j) > lists.get(i+1).get(j)){ //compare next highest cards
+                        lists.remove(lists.get(i+1));
+                        tiedPlayers.remove(tiedPlayers.get(i+1));
+                        players.remove(players.get(i+1));
+                        i = -1;//go back to the first player
+                        j = -10;//break out of inner loop
+                    }else if(lists.get(i).get(j) < lists.get(i+1).get(j)){
+                        lists.remove(lists.get(i));
+                        tiedPlayers.remove(tiedPlayers.get(i));
+                        players.remove(players.get(i));
+                        i = -1;//go back to first player
+                        j = -10;//break out of inner loop
+                    }
+                    if(tiedPlayers.size() == 1){
+                        int temp = players.get(0);
+                        switch(temp){
+                            case 1:
+                                winner = "Player 1";
+                                break;
+                            case 2:
+                                winner = "Player 2";
+                                break;
+                            case 3:
+                                winner = "Player 3";
+                                break;
+                            case 4:
+                                winner = "Player 4";
+                                break;
+                            case 5:
+                                winner = "Player 5";
+                                break;
+                            case 6:
+                                winner = "Player 6";
+                                break;
+                            case 7:
+                                winner = "Player 7";
+                                break;
+                            case 8:
+                                winner = "Player 8";
+                                break;
+                        }
+                    }
+                    if(winner != "tie"){
+                        //leave both loops
+                        j = -10;
+                        i = 10;
+                    }
+                }
+            }
+        }
+        //same full house's is a tie
+        //find winner if tied players have the same four of a kind
+        if((players.size() > 1) && (ranks[7] >= 279) && (ranks[7] <= 291) && (winner == "tie")){
+            ArrayList<Integer> topCard = new ArrayList<Integer>();
+            for(int i = 0; i < tiedPlayers.size(); i++){
+                ArrayList<Integer> cards = tiedPlayers.get(i).getAllCardsSorted(d);
+                cards.remove(Integer.valueOf(tiedPlayers.get(i).getQValueA()));
+                cards.remove(Integer.valueOf(tiedPlayers.get(i).getQValueA()));
+                cards.remove(Integer.valueOf(tiedPlayers.get(i).getQValueA()));
+                cards.remove(Integer.valueOf(tiedPlayers.get(i).getQValueA()));
+                topCard.add(cards.get(2));
+                cards.clear();
+            }
+            for(int i = 0; i < topCard.size() - 1; i++){
+                if(topCard.get(i) > topCard.get(i+1)){
+                    topCard.remove(topCard.get(i+1));
+                    players.remove(players.get(i+1));
+                    i = -1;
+                }else if(topCard.get(i) < topCard.get(i+1)){
+                    topCard.remove(topCard.get(i));
+                    players.remove(players.get(i));
+                    i = -1;
+                }
+                if(players.size() == 1){
+                        int temp = players.get(0);
+                        switch(temp){
+                            case 1:
+                                winner = "Player 1";
+                                break;
+                            case 2:
+                                winner = "Player 2";
+                                break;
+                            case 3:
+                                winner = "Player 3";
+                                break;
+                            case 4:
+                                winner = "Player 4";
+                                break;
+                            case 5:
+                                winner = "Player 5";
+                                break;
+                            case 6:
+                                winner = "Player 6";
+                                break;
+                            case 7:
+                                winner = "Player 7";
+                                break;
+                            case 8:
+                                winner = "Player 8";
+                                break;
+                        }
+                    }
+                    if(winner != "tie"){
+                        i = 10;
+                    }
+            }
+        }
+        //same straight flush's are a tie
+        //find winners hand and return it
+        String winningHand = "";
+        switch(winner){
+            case "Player 1":
+                winningHand = ("" + p1.getA() + p1.getB());
+                break;
+            case "Player 2":
+                winningHand = ("" + p2.getA() + p2.getB());
+                break;
+            case "Player 3":
+                winningHand = ("" + p3.getA() + p3.getB());
+                break;
+            case "Player 4":
+                winningHand = ("" + p4.getA() + p4.getB());
+                break;
+            case "Player 5":
+                winningHand = ("" + p5.getA() + p5.getB());
+                break;
+            case "Player 6":
+                winningHand = ("" + p6.getA() + p6.getB());
+                break;
+            case "Player 7":
+                winningHand = ("" + p7.getA() + p7.getB());
+                break;
+            case "Player 8":
+                winningHand = ("" + p8.getA() + p8.getB());
+                break;
+        }
+        if(winner == "tie"){
+            winningHand = "tie";
+        }
+        return winningHand;
 	}
+    public String getWinner(){
+        return winner;
+    }
 }

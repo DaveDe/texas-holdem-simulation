@@ -18,9 +18,10 @@ public class Player {
     private ArrayList<Integer> straightValues = new ArrayList<Integer>(); //stores values of a straight in ascending order
     private ArrayList<Integer> straightValues2 = new ArrayList<Integer>(); //stores values of 2nd straight (weaker than 1st)
     private ArrayList<Integer> straightValues3 = new ArrayList<Integer>(); //stores values of 3rd straight (weaker than 2nd)
-    private ArrayList<Integer> flushValues = new ArrayList<Integer>(); //stores values of a flush in ascending order
+    private ArrayList<Integer> flushValues = new ArrayList<Integer>(); //stores values of a flush in ascending order(only 5 values)
     private ArrayList<Integer> flushValues2 = new ArrayList<Integer>(); //stores values of 2nd flush (weaker than 1st)
     private ArrayList<Integer> flushValues3 = new ArrayList<Integer>(); //stores values of 3rd flush (weaker than 2nd)
+    private ArrayList<Integer> flushValuesTemp = new ArrayList<Integer>(); //stores all values of the same suit, assuming there are at least 5
     private String rankGeneral = "";
     
     public Player(String a, String b){
@@ -644,6 +645,9 @@ public class Player {
         }
         //ensure flushValues is ascending order
         Collections.sort(flushValues);
+        for(int x: flushValues){
+            flushValuesTemp.add(x);
+        }
         //account for multiple flushes (useful in straight-flush detection)
         if(flushValues.size() == 6){
             int[] values = new int[6];
@@ -885,7 +889,6 @@ public class Player {
             }
 
         }
-
         return finalRank;
     }
     //finds greatest of two cards, if equal return 0
@@ -947,10 +950,13 @@ public class Player {
     public ArrayList<Integer> getFlushValues(){
         return flushValues;
     }
+    public ArrayList<Integer> getFlushValuesTemp(){
+        return flushValuesTemp;
+    }
     public ArrayList<Integer> getStraightValues(){
         return straightValues;
     }
-
+    //return a card of the chosen index
     public int getCardsSorted(int index, Deck d){
         String[] flopped = d.getFlopped();
         int[] ints = new int[7];
@@ -970,5 +976,30 @@ public class Player {
         }
         Arrays.sort(ints);
         return ints[index];
+    }
+    //return a sorted list of the players cards
+    public ArrayList<Integer> getAllCardsSorted(Deck d){
+        String[] flopped = d.getFlopped();
+        int[] ints = new int[7];
+        ints[0] = Rank.convert(a.charAt(0));
+            if(ints[0] == 0){
+                ints[0] = Character.getNumericValue(a.charAt(0));
+            }
+        ints[1] = Rank.convert(b.charAt(0));
+            if(ints[1] == 0){
+                ints[1] = Character.getNumericValue(a.charAt(0));
+            }
+        for(int i = 2; i < ints.length; i++){
+        ints[i] = Rank.convert(flopped[i-2].charAt(0));
+            if(ints[i] == 0){
+                ints[i] = Character.getNumericValue(flopped[i-2].charAt(0));
+            }
+        }
+        Arrays.sort(ints);
+        ArrayList<Integer> ret = new ArrayList<Integer>();
+        for(int x: ints){
+            ret.add(x);
+        }
+        return ret;
     }
 }

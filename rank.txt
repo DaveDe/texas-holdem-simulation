@@ -144,7 +144,7 @@ A2345 = 112
 10JQKA = 121
 
 
-Flush (122) - flushes are compared in the main
+Flush (122) - flushes are compared in Compare.java
 
 
 Full House (123-278)
