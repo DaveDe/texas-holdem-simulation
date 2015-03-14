@@ -81,7 +81,7 @@ public class Compare{
         System.out.println(ranks[7]);*/
 
         // find winner
-        winner = "tie";
+        winner = "tie ";
         Arrays.sort(ranks);
         //find if the top ranks are tied, store the ranks in an arraylist
         ArrayList<Integer> tied = new ArrayList<Integer>();
@@ -184,7 +184,7 @@ public class Compare{
         }
 
         //find winner if tied players have high cards
-        if((players.size() > 1) && (ranks[7] <= 7) && (winner == "tie")){
+        if((players.size() > 1) && (ranks[7] <= 7) && (winner == "tie ")){
             for(int i = 0; i <= players.size()-2; i++){ //loop through all tied players(excluding the last one)
                 for(int j = 5; j >= 2; j--){ //compare cards between the 2 players, up to the 5th card
                     if(tiedPlayers.get(i).getCardsSorted(j,d) > tiedPlayers.get(i+1).getCardsSorted(j,d)){ //compare next highest cards
@@ -227,7 +227,7 @@ public class Compare{
                                 break;
                         }
                     }
-                    if(winner != "tie"){
+                    if(winner != "tie "){
                         //leave both loops
                         j = 1;
                         i = 10;
@@ -236,7 +236,7 @@ public class Compare{
             }
         }
         //find winner if tied players have one pair of the same value
-        if((players.size() > 1) && (ranks[7] >= 8) && (ranks[7] <= 20) && (winner == "tie")){
+        if((players.size() > 1) && (ranks[7] >= 8) && (ranks[7] <= 20) && (winner == "tie ")){
             ArrayList<ArrayList<Integer>> lists = new ArrayList<ArrayList<Integer>>();
             for(int i = 0; i <= players.size()-1; i++){//loop through players, add lists of there cards minus the pair to lists arraylist
                 ArrayList<Integer> cards = tiedPlayers.get(i).getAllCardsSorted(d);
@@ -289,7 +289,7 @@ public class Compare{
                                 break;
                         }
                     }
-                    if(winner != "tie"){
+                    if(winner != "tie "){
                         //leave both loops
                         j = 1;
                         i = 10;
@@ -298,7 +298,7 @@ public class Compare{
             }
         }
         //find winner if tied players have the same two pair
-        if((players.size() > 1) && (ranks[7] >= 21) && (ranks[7] <= 98) && (winner == "tie")){
+        if((players.size() > 1) && (ranks[7] >= 21) && (ranks[7] <= 98) && (winner == "tie ")){
             ArrayList<Integer> max = new ArrayList<Integer>();
             for(int i = 0; i <= players.size()-1; i++){//loop through players, add highest card after their 2 pairs to max (to compare their high card)
                 ArrayList<Integer> cards = tiedPlayers.get(i).getAllCardsSorted(d);
@@ -323,7 +323,7 @@ public class Compare{
                 }
             }
             if(aa > 1){
-                winner = "tie";
+                winner = "tie ";
             }else{
             int temp = players.get(maxIndex);
             switch(temp){
@@ -355,7 +355,7 @@ public class Compare{
             }
         }
         //find winner if tied players have the same 3 of a kind
-        if((players.size() > 1) && (ranks[7] >= 99) && (ranks[7] <= 111) && (winner == "tie")){
+        if((players.size() > 1) && (ranks[7] >= 99) && (ranks[7] <= 111) && (winner == "tie ")){
             ArrayList<ArrayList<Integer>> lists = new ArrayList<ArrayList<Integer>>();
             for(int i = 0; i <= players.size()-1; i++){//loop through players, add lists of there cards minus the three of a kind 
                 ArrayList<Integer> cards = tiedPlayers.get(i).getAllCardsSorted(d);
@@ -409,7 +409,7 @@ public class Compare{
                                 break;
                         }
                     }
-                    if(winner != "tie"){
+                    if(winner != "tie "){
                         //leave both loops
                         j = 1;
                         i = 10;
@@ -419,7 +419,7 @@ public class Compare{
         }
         //same straights is a tie
         //find winner if tied players have flushes
-        if((players.size() > 1) && (ranks[7] == 122) && (winner == "tie")){
+        if((players.size() > 1) && (ranks[7] == 122) && (winner == "tie ")){
             ArrayList<ArrayList<Integer>> lists = new ArrayList<ArrayList<Integer>>();
             for(int i = 0; i <= players.size()-1; i++){//loop through players, add lists of there top flush cards
                 ArrayList<Integer> cards = tiedPlayers.get(i).getFlushValues();
@@ -470,7 +470,7 @@ public class Compare{
                                 break;
                         }
                     }
-                    if(winner != "tie"){
+                    if(winner != "tie "){
                         //leave both loops
                         j = -10;
                         i = 10;
@@ -480,7 +480,7 @@ public class Compare{
         }
         //same full house's is a tie
         //find winner if tied players have the same four of a kind
-        if((players.size() > 1) && (ranks[7] >= 279) && (ranks[7] <= 291) && (winner == "tie")){
+        if((players.size() > 1) && (ranks[7] >= 279) && (ranks[7] <= 291) && (winner == "tie ")){
             ArrayList<Integer> topCard = new ArrayList<Integer>();
             for(int i = 0; i < tiedPlayers.size(); i++){
                 ArrayList<Integer> cards = tiedPlayers.get(i).getAllCardsSorted(d);
@@ -530,7 +530,7 @@ public class Compare{
                                 break;
                         }
                     }
-                    if(winner != "tie"){
+                    if(winner != "tie "){
                         i = 10;
                     }
             }
@@ -564,8 +564,8 @@ public class Compare{
                 winningHand = ("" + p8.getA() + p8.getB());
                 break;
         }
-        if(winner == "tie"){
-            winningHand = "tie";
+        if(winner == "tie "){
+            winningHand = "tie ";
         }
         return winningHand;
 	}

@@ -231,7 +231,7 @@ public class Tester {
         p8 = new Player("9h","6c");
         Compare c3 = new Compare();
         String winner3 = c3.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
-        assertTrue(c3.getWinner() == "tie");
+        assertTrue(c3.getWinner() == "tie ");
     }
     @Test
     public void testOnePairTie(){
@@ -272,7 +272,7 @@ public class Tester {
         p8 = new Player("3h","qc");
         Compare c3 = new Compare();
         String winner3 = c3.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
-        assertTrue(c3.getWinner() == "tie");
+        assertTrue(c3.getWinner() == "tie ");
     }
     @Test
     public void testTwoPairTie(){
@@ -301,7 +301,7 @@ public class Tester {
         p8 = new Player("6h","5c");
         Compare c2 = new Compare();
         String winner2 = c2.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
-        assertTrue(c2.getWinner() == "tie");
+        assertTrue(c2.getWinner() == "tie ");
         d.setFlopped("3h","6d","7c","7s","1s");
         p1 = new Player("6h","1c");
         p2 = new Player("5h","1c");
@@ -342,7 +342,7 @@ public class Tester {
         p8 = new Player("6h","5c");
         Compare c2 = new Compare();
         String winner2 = c2.winningHand(p1,p2,p3,p4,p5,p6,p7,p8,d);
-        assertTrue(c2.getWinner() == "tie");
+        assertTrue(c2.getWinner() == "tie ");
     }
     @Test
     public void testFlushTie(){

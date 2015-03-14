@@ -694,10 +694,48 @@ public class Player {
             Collections.sort(straightValues);
             Collections.sort(straightValues2);
             Collections.sort(straightValues3);
-            if((straightValues.equals(flushValues))||(straightValues.equals(flushValues2))||(straightValues.equals(flushValues3)) ||
-                (straightValues2.equals(flushValues)) || (straightValues2.equals(flushValues2)) || (straightValues2.equals(flushValues3)) ||
-                (straightValues3.equals(flushValues)) || (straightValues3.equals(flushValues2)) || (straightValues3.equals(flushValues3))){
+            if(straightValues.equals(flushValues)){
                 sf = true;
+            }
+            if(flushValues2.size() > 1){
+                if(straightValues.equals(flushValues2)){
+                    sf = true;
+                }
+            }
+            if(flushValues3.size() > 1){
+                if(straightValues.equals(flushValues3)){
+                    sf = true;
+                }
+            }
+            if(straightValues2.size() > 1){
+                if(straightValues2.equals(flushValues)){
+                    sf = true;
+                }
+            }
+            if(straightValues2.size() > 1 && flushValues2.size() > 1){
+                if(straightValues2.equals(flushValues2)){
+                    sf = true;
+                }
+            }
+            if(straightValues2.size() > 1 && flushValues3.size() > 1){
+                if(straightValues2.equals(flushValues3)){
+                    sf = true;
+                }
+            }
+            if(straightValues3.size() > 1){
+                if(straightValues3.equals(flushValues)){
+                    sf = true;
+                }
+            }
+            if(straightValues3.size() > 1 && flushValues2.size() > 1){
+                if(straightValues3.equals(flushValues2)){
+                    sf = true;
+                }
+            }
+            if(straightValues3.size() > 1 && flushValues3.size() > 1){
+                if(straightValues3.equals(flushValues3)){
+                    sf = true;
+                }
             }
         }
         //determine general rank of hand
@@ -858,7 +896,7 @@ public class Player {
             }
             if(a == 2){
                 //check if straight starts with ace
-                if((straightValues2.get(4) == 14) && (straightValues2.get(3) == 5)){
+                if((straightValues2.get(4) == 14) && (straightValues2.get(3) == 5)){//error
                     finalRank = rank;
                 }else{
                     rank++;
@@ -873,7 +911,7 @@ public class Player {
             }
             if(a == 3){
                 //check if straight starts with ace
-                if((straightValues3.get(4) == 14) && (straightValues3.get(3) == 5)){
+                if((straightValues3.get(4) == 14) && (straightValues3.get(3) == 5)){//error
                     finalRank = rank;
                 }else{
                     rank++;
